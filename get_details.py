@@ -1,6 +1,8 @@
 """ 
 Gist:
 
+For each playlist in folder:
+
 1. Take in playlist
 
 2. Add columns: title, author name, thumbnail name, freeform notes
@@ -11,9 +13,11 @@ Gist:
 
 3b. Download image from thumbnail URL
 
-3c. Append  title and author name
+3c. Append title and author name
 
 4. Format playlist to import if needed
+
+Then backup database, then update database to match
 
 """
 
@@ -34,8 +38,8 @@ def get_noembed_info(row, attribute):
         return res[attribute]
 
 df['Title'] = df.apply(get_noembed_info, attribute=('title'), axis=1)
-df['Uploader'] = df.apply(get_noembed_info, attribute=('author_name'), axis=1)
+df['Author_Name'] = df.apply(get_noembed_info, attribute=('author_name'), axis=1)
 
-# next step: ability to optionally download each thumbnail (with video ID as image name)
+# todo: ability to optionally download each thumbnail (with video ID as image name)
 
 print(df.head())
